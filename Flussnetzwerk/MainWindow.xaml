@@ -1,0 +1,47 @@
+﻿<Window x:Class="FlowNetworkWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Flow Network Visualization" Height="600" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu for adding nodes and edges -->
+        <Menu Grid.Row="0" Name="GraphMenu">
+            <MenuItem Header="Graph">
+                <MenuItem Header="Add Node" Click="AddNode_Click"/>
+                <MenuItem Header="Add Edge" Click="AddEdge_Click"/>
+                <MenuItem Header="Show Examples">
+                    <MenuItem Header="Example 1" Click="ShowExample1_Click"/>
+                    <MenuItem Header="Example 2" Click="ShowExample2_Click"/>
+                    <MenuItem Header="Example 3" Click="ShowExample3_Click"/>
+                </MenuItem>
+                <MenuItem Header="Clear" Click="Clear_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Start button -->
+        <Button Name="StartButton" Content="Start" Grid.Row="1" Margin="10,10" Click="StartButton_Click"/>
+
+        <!-- Instruction TextBlock -->
+        <TextBlock Name="InstructionTextBlock" Grid.Row="1" Margin="15,10" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+
+        <!-- Canvases for drawing graphs -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Canvas Name="FlowCanvas" Background="White" Grid.Column="0" MouseMove="FlowCanvas_MouseMove" MouseLeftButtonUp="FlowCanvas_MouseLeftButtonUp"/>
+            <Canvas Name="ResidualCanvas" Background="LightGray" Grid.Column="1"/>
+        </Grid>
+
+        <!-- TextBox for displaying flow information -->
+        <TextBox Name="FlowTextBox" Grid.Row="3" Margin="10" IsReadOnly="True" FontSize="16"
+                 TextAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>
